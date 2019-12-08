@@ -158,56 +158,51 @@ c={
 		}
 	}
 }
+function next_obj(elm){
+    if(elm>=0){
+        if(json_string[_terminate[elm]]!=_arry_terminate[elm]-1){
+            json_string[_terminate[elm]]++;
+        }else{
+            json_string[_terminate[elm]]=0;
+            next_obj(elm-1)
+        }
+    }
+}
 b="collection->items->data->description";
 b=b.split("->");
 
-function parse_json1(json,current_pos){
-    var find=b[b.length-1]
+function parse_json(json,current_pos){
+    var find=b[b.length-1];
+    x=[];
     var count=0
-    var _terminate=[];var flag=0;
-    var _arry_terminate=[];
-    var myflag=[];alf=[]
-    var json_string=[];
-    while(b[current_pos-1]!=find &&count<100){
+     _terminate=[];var flag=0;
+     _arry_terminate=[];
+     json_string=[];
+    while(b[current_pos-1]!=find ){//&&count<100
         if(!Array.isArray(json)){
             json=json[b[current_pos]]
             json_string.push(b[current_pos]);
             if(b[current_pos]==find){
-                
-                console.log(_arry_terminate[1])
-                for(i=0;i<_arry_terminate[0]-1;i++){
-                    for(j=0;j<_arry_terminate[1];j++){  
-                        console.log(iterate_json("a."+ json_string.join('.')))
-                        
-                        // console.log(json_string)
-                    }
-                    json_string[_terminate[0]]++;
-                }
-                
                 for(i=0;i<_arry_terminate.reduce( (a,b) => a * b );i++){
-                    
+                    //console.log(lol("a."+ json_string.join('.')))
+                    x.push(_window("a."+ json_string.join('.')))
+                    next_obj(_arry_terminate.length-1)
                 }
-                 //console.log(lol("a."+ json_string.join('.')))
-                // console.log(json_string)
+                if(i==_arry_terminate.reduce( (a,b) => a * b)){return x;}
             }
-            c=json;
             current_pos++
-            myflag[count]=c;
         }else{
             _terminate.push(count);
             _arry_terminate.push(json.length)
-            alf[count]=json
             json=json[0];
-            myflag[count]=json;
             json_string.push(0)
         }
         count++;
     }   
 }
-parse_json1(c,0,-1)
-// console.log(parse_json1(a,0,-1))
-//console.log(lol("a"+parse_json1(a,0,-1)))
-function iterate_json(name) {
+console.log(parse_json(a,0,-1))
+
+function _window(name) {
     var parts = name.split(".");
     var n;
     var obj = window;
