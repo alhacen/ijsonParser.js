@@ -16,7 +16,7 @@
 function query(q){
 	document.getElementById("result").innerHTML=""
 	//empty the container
-	fetch("http://api.giphy.com/v1/gifs/search?api_key=yGrTEq09q0ErjkN1CtAZdVpotZSfKmVe&q="+q)	//fetch data
+	fetch("https://api.giphy.com/v1/gifs/search?api_key=yGrTEq09q0ErjkN1CtAZdVpotZSfKmVe&q="+q)	//fetch data
 	  .then(response => response.json())
 	  .then(json => (displayImg(json)));
 }
