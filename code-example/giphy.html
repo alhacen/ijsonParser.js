@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script src="../src/ijsonParser.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="input-field col s6">
+			  <input placeholder="Placeholder" id="first_name" type="text" value="elon musk" onkeyup="query(this.value)" class="validate">
+			  
+			</div>
+			<div id="result"></div>
+		</div>
+	</body>
+<script>
+//retrive json
+function query(q){
+	document.getElementById("result").innerHTML=""
+	//empty the container
+	fetch("http://api.giphy.com/v1/gifs/search?api_key=yGrTEq09q0ErjkN1CtAZdVpotZSfKmVe&q="+q)	//fetch data
+	  .then(response => response.json())
+	  .then(json => (displayImg(json)));
+}
+ function displayImg(json){
+ 	console.log(json)
+ 	description=ijsonParser.parse(json,"data->title");				//parse description
+ 	src=ijsonParser.parse(json,"data->images->preview_webp->url");	//parse img src
+ 	href=ijsonParser.parse(json,"data->url");						//parse img href
+ 	for(i=0;i<description.length;i++){
+ 		document.getElementById("result").innerHTML+=`<a href='${href[i]}'><img src="${src[i]}" style="height:200px" alt="${description[i]}"></a>`
+ 	}
+
+ }
+ query("elon musk"); //first query
+</script>
+<style>
+	img{margin:1px;}
+	input[type=text] {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  box-sizing: border-box;
+	}
+	.container{width:80%;margin-left:auto;margin-right:auto;}
+</style>
+</html>
