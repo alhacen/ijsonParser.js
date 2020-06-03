@@ -4,7 +4,7 @@
 ## Getting Started
 
 ### Include the library :
-include irouter in your page
+include ijsonParser in your page
 ```<script src="https://ijsonparser.alhacen.cf/src/ijsonParser.js"></script>```
 
 ## usage :
