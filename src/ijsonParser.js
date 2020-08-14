@@ -1,4 +1,4 @@
-var ijsonParser=(function(){
+const ijsonParser=(function(){
     var json_map;
     var current_pos=0;
     var _terminate=[];                                     //points where array in json
@@ -64,3 +64,4 @@ var ijsonParser=(function(){
         }
     }
 })();
+export default ijsonParser;

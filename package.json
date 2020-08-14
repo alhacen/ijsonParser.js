@@ -1,0 +1,29 @@
+{
+  "name": "ijsonParser",
+  "version": "0.1.0",
+  "description": "Simple json Parser with string keys",
+  "author": "alhaqhassan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alhaqhassan/ijsonParser.js"
+  },
+  "keywords": [
+    "ijsonParser",
+    "json parser",
+    "json parser with string keys"
+  ],
+
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+}
